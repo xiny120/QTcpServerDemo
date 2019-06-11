@@ -25,6 +25,7 @@ private:
 private slots:
 	void newConnection();
 	void disconnected();
+	void error(QAbstractSocket::SocketError);
 	void acceptError(QAbstractSocket::SocketError socketError);
 
 };

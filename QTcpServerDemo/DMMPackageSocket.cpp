@@ -2,6 +2,7 @@
 #include "QTcpServerDemo.h"
 #include <sstream>
 #include <qthread.h>
+#include <qabstractsocket.h>
 
 DMMPackageSocket::DMMPackageSocket(QTcpSocket *parent, DMMServer* pServer)
 	: mpts(parent),
@@ -9,7 +10,7 @@ DMMPackageSocket::DMMPackageSocket(QTcpSocket *parent, DMMServer* pServer)
 	// 绑定可读取信号。有数据时自动读取。
 	connect(qobject_cast<QIODevice *>(mpts), &QIODevice::readyRead, this, &DMMPackageSocket::readyRead);
 	//connect(qobject_cast<QAbstractSocket *>(mpts), &QAbstractSocket::disconnected, this, &DMMPackageSocket::disconnected);
-	//connect(qobject_cast<QAbstractSocket *>(mpts), &QAbstractSocket::error(SocketError), this, &DMMPackageSocket::error);
+	//connect(qobject_cast<QAbstractSocket *>(mpts), &QAbstractSocket::error(int), this, &DMMPackageSocket::error);
 }
 
 DMMPackageSocket::~DMMPackageSocket(){
